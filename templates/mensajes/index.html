@@ -1,9 +1,110 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Mensaje</title>
+</head>
+<body class="overflow-hidden">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Inicio</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
 
-{% block title %}
-Mensajes
-{% endblock title %}
 
-{% block main %}
-<h2>TODO</h2>
-{% endblock main %}
+      {% if not session %}
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Iniciar sesión <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Registrarse</a>
+        </li>
+      {% else %}
+        <li class="nav-item"><a class="nav-link" href="/anotaciones">Anotaciones</a></li>
+        <li class="nav-item"><a class="nav-link" href="/biografia">Biografia</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contactos">Contactos</a></li>
+        <li class="nav-item"><a class="nav-link" href="/mensajes">Mensajes</a></li>
+        <li class="nav-item"><a class="nav-link" href="/correos">Correos</a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout">Cerrar sesión</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+    <section class="h-screen flex overflow-hidden">
+        <div class="bg-white w-3/12 p-6 overflow-auto">
+            <h3 class="text-2xl mb-8">Chat online</h3>
+            <div class="overflow-auto">
+                <div class="flex bg-gray-100 rounded p-4 mb-4">
+                    {% for mensajes is mensaje %}
+                    <div class="w-full overflow-auto">
+                        <div class="flex mb-1">
+                            <p class="font-medium flex-grow">{{ mensajes.id_emisor }}</p>
+                            <small class="font-light text-gray-500">{{ mensajes.fecha }}</small>
+                        </div>
+                        <small class="overflow-ellipsis overflow-hidden
+                        whitespace-nowrap block font-light text-gray-500">{{ mensajes.contenido }}</small>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="bg-gray-100 w-9/12">
+            <div class="px-20 py-3 border-b">
+                <p class="font-medium">Ledacar</p>
+                <small class="text-gray-500 font-light">Online</small>
+            </div>
+            <div class="py-6 px-20 overflow-auto h-2/3">
+                <div class="flex mb-12">
+                    <div class="flex flex-col">
+                        <div class="bg-white p-6 w-96 rounded-3xl rounded-bl-none">
+                            <p>Ledacar</p>
+                            <small class="text-gray-500 font-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sapiente eos illo labore, deserunt recusandae deleniti ea odit placeat qui cum debitis cupiditate nulla molestiae repellat quibusdam magnam est officiis.</small>
+                        </div>
+                        <small class="text-gray-500 font-light">8:50pm</small>
+                    </div>
+                </div>
+                <!---->
+                <div class="flex mb-12 flex-row-reverse">
+                    <div class="flex flex-col">
+                        <div class="bg-blue-500 p-6 w-96 rounded-3xl rounded-br-none">
+                            <p>Ledacar</p>
+                            <small class="text-white font-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sapiente eos illo labore, deserunt recusandae deleniti ea odit placeat qui cum debitis cupiditate nulla molestiae repellat quibusdam magnam est officiis.</small>
+                        </div>
+                        <small class="text-gray-500 font-light self-end">8:50pm</small>
+                    </div>
+                </div>
+                <div class="flex mb-12">
+                    <div class="flex flex-col">
+                        <div class="bg-white p-6 w-96 rounded-3xl rounded-bl-none">
+                            <p>Ledacar</p>
+                            <small class="text-gray-500 font-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sapiente eos illo labore, deserunt recusandae deleniti ea odit placeat qui cum debitis cupiditate nulla molestiae repellat quibusdam magnam est officiis.</small>
+                        </div>
+                        <small class="text-gray-500 font-light">8:50pm</small>
+                    </div>
+                </div>
+                <div class="flex mb-12 flex-row-reverse">
+                    <div class="flex flex-col">
+                        <div class="bg-blue-500 p-6 w-96 rounded-3xl rounded-br-none">
+                            <p>Lucario</p>
+                            <small class="text-white font-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sapiente eos illo labore, deserunt recusandae deleniti ea odit placeat qui cum debitis cupiditate nulla molestiae repellat quibusdam magnam est officiis.</small>
+                        </div>
+                        <small class="text-gray-500 font-light self-end">8:50pm</small>
+                    </div>
+                </div>
+                <!---->
+            </div>
+            <div class="py-2 px-20 flex border-t">
+                <input type="text" name="send" class="px-4 py-2 bg-gray-100 w-full focus:outline-none" placeholder="Send mensagge">
+                <a href="" class="bg-blue-500 text-white rounded px-4 py-2">Send</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
