@@ -26,7 +26,7 @@ def agregar():
                             id_usuario = session["id_user"], titulo = titulo, contenido = contenido)
         return redirect("/anotaciones")
 
-
+@app.route('/actualizar')
 def actualizar():
 
     if request.method == "POST"
@@ -48,7 +48,7 @@ def actualizar():
                             titulo = titulo, contenido = contenido, id = id)
         return redirect("/anotaciones")
 
-
+@app.route('/eliminar')
 def eliminar():
 
     if request.method == "POST"
