@@ -17,7 +17,7 @@ $(document).on("click", ".btn-Editar", function (e) {
     $("#id").val(id)
     $("#titulo").val(titulo);
     $("#contenido").val(contenido);
-    $("#form-anotaciones").attr("action", "/Actualizar");
+    $("#form-anotaciones").attr("action", "/agregar");
     $("#modalAnotacion").modal("show");
 });
 

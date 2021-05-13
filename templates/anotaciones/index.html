@@ -13,27 +13,30 @@ Anotaciones
         <button class="btn btn-info btn-Agregar">Agregar Nueva</button>
     </div>
 
+    {% if not anotaciones %}
     <div class="mt-1">
             <h2 class="alert alert-info d-block">No hay anotaciones</h2>
-        </div>
+    </div>
+    {% endif %}
 
     <div class="principal mt-3">
-        <div class="card bg-white mb-2" id="primero">
-            <div class="card-body">
-                <input type="hidden" value="1" class="id-nota">
-                <div class="card-head d-flex justify-content-between flex-wrap">
-                    <h4 class="card-title">Title</h4>
-                    <small><strong>F. Creacion:</strong> 12/05/2021</small>
+        {%for nota in anotaciones %}
+            <div class="card bg-white mb-2" id="primero">
+                <div class="card-body">
+                    <input type="hidden" value="1" class="id-nota">
+                    <div class="card-head d-flex justify-content-between flex-wrap">
+                        <h4 class="card-title">nota.titulo</h4>
+                        <small><strong>F. Creacion:</strong> 12/05/2021</small>
+                    </div>
+                    <p class="card-text">nota.contenido</p>
                 </div>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus reprehenderit
-                        laborum pariatur incidunt atque saepe dignissimos illum optio! Aliquam, quaerat.</p>
+                <div class="card-footer">
+                    <button class="btn btn-secondary btn-Editar">Editar</button>
+                    <button class="btn btn-danger btn-Eliminar">Eliminar</button>
+                </div>
             </div>
-            <div class="card-footer">
-                <button class="btn btn-secondary btn-Editar">Editar</button>
-                <button class="btn btn-danger btn-Eliminar">Eliminar</button>
-            </div>
-        </div>
-        <a href="#primero" id="enlace">Sub</a>
+        {% endif %}
+        <!--<a href="#primero" id="enlace">Sub</a>-->
     </div>
 
     <div class="modal fade" id="modalAnotacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
