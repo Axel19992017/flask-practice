@@ -1,9 +1,22 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-Correos 
+Correos
 {% endblock title %}
 
 {% block main %}
-<h2>TODO</h2>
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nombre completo </label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">Queremos tu nombre para hacerte spam, no mentira, es para tenerte en nuestras oraciones :3.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Correo electronico </label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 {% endblock main %}
+
