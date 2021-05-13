@@ -1,0 +1,14 @@
+*{
+    color: blue;
+}
+div{
+    padding: 5px;
+}
+div {
+  background-color: lightblue;
+}
+button {
+  width: 300px;
+  margin: auto;
+  border: 1px solid red;
+}
