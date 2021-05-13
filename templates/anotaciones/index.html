@@ -1,4 +1,7 @@
 {% extends 'layout.html' %}
+{% block headers_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+{% endblock %}
 
 {% block title %}
 Anotaciones
@@ -66,3 +69,8 @@ Anotaciones
         </div>
     </div>
 {% endblock main %}
+
+{% block scripts_js %}
+    <!-- Jquery Confirm https://craftpip.github.io/jquery-confirm/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+{% endblock %}
