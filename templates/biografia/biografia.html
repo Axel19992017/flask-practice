@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Biografía
+{% endblock title %}
+
+{% block main %}
+<form action="/sumbit_biografia" method="post">
+    <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="nombre_completo" placeholder="Nombre__completo" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="apodo" placeholder="Apodo" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="gustos_comidas" placeholder="Gustos_comidas" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="gustos_musica" placeholder="Gustos_musica" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="link_red_social" placeholder="Link_red_social" type="text"/>
+        </div>
+        <button class="btn btn-primary" type="submit">biografia</button>
+    </form>
+
+{% endblock main %}
