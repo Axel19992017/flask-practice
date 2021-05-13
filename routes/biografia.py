@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request, flash, redirect
 
 from app import app, db, login_required
 
@@ -18,7 +18,7 @@ def submit_biografia():
 
     if not nombre_completo or not apodo or not gustos_comida or not gustos_musica or not link_red_social:
         flash("Datos incompletos")
-        return redirect("/biografia"
+        return redirect("/biografia")
 
     db.execute("""INSERT INTO biografia(user_id, nombre_completo, apodo, gustos_comida, gustos_musica, link_red_social)
     VALUES(:user_id, :nota)""", user_id=session["user_id"], nombre_completo = nombre_completo, apodo = apodo, gustos_comida = gustos_comida, link_red_social = link_red_social)
@@ -38,9 +38,9 @@ def editar_biografia():
         return redirect("/biografia")
 
     db.execute("""UPDATE nombre_completo, apodo, gustos_comida, gustos_musica, link_red_social SET nombre_completo = :nombre, apodo = :apodo, gustos_musica = :musica, gustos_comida = :comida,link_red_social = :red_social where id= :id""",
-               nombre = nombre_completo, apodo = :apodo, musica = gustos_musica, comida = gustos_comida, red_social = link_red_social, biografia_id = biografia_id)
+               nombre = nombre_completo, apodo = apodo, musica = gustos_musica, comida = gustos_comida, red_social = link_red_social, biografia_id = biografia_id)
 
     return redirect("/")
-@app.route("/eliminar_biografia")
+
 
 
